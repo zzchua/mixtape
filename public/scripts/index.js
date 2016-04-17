@@ -1,7 +1,6 @@
 (function() {
     window.onload = function() {
-        import * as common from 'common';
-        var ref = common.ref;
+        const ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
         var authData = ref.getAuth();
         if (authData) {
             // user is logged in:
@@ -14,7 +13,7 @@
                 } else {
                     console.log("Authenticated successfully with payload:", authData);
                     var uid = authData.uid;
-                    if (ref.child("users").child("uid").on
+                    // if (ref.child("users").child("uid").on
                     // redirect to feed after login:
                     window.location = "feed.html";
                 }
