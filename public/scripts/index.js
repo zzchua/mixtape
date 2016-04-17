@@ -1,13 +1,15 @@
 define(function(require) {
     var common = require('./common');
     var ref = common.ref;
-    // TODO: 2 calls to getAuth, one in common
-    var authData = ref.getAuth();
-    document.getElementById("login").onclick = callLogin;
-    if (authData) {
-        // user is logged in, redirect to feed.
-        window.location = "feed.html";
-    }
+    window.onload = function() {
+        // TODO: 2 calls to getAuth, one in common
+        var authData = ref.getAuth();
+        document.getElementById("login").onclick = callLogin;
+        if (authData) {
+            // user is logged in, redirect to feed.
+            window.location = "feed.html";
+        }
+    };
 
     function callLogin() {
         ref.authWithOAuthPopup("facebook", function(error, authData) {
@@ -36,6 +38,5 @@ define(function(require) {
             }
         });
     }
-
 });
 
