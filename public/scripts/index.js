@@ -1,6 +1,6 @@
 (function() {
     window.onload = function() {
-        const ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
+        var ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
         var authData = ref.getAuth();
         if (authData) {
             // user is logged in:
