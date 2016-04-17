@@ -118,7 +118,7 @@ nav a:visited {
     text-transform: uppercase;
     margin-left: auto;
 }
-.request, .send-mix {
+.request, .send-mix, .pending {
     width: 92%;
     margin: auto;
     margin-bottom: 1em;
