@@ -34,7 +34,7 @@ define(function(require) {
             });
 			$(".drop-option").click(function() {
 		    	artistName = $(this).text();
-		    	coverArt = ($(this).data("url"));
+		    	coverArt = ($(this).data("url").url);
 		    	$("#the-artist-drop").empty();
 		    	$("#artistInput").val(artistName);
 		    });
