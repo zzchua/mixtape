@@ -2,18 +2,55 @@ define(function() {
     var ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
     // if no cookies set and logged in, set cookie
     if (!document.cookie) {
-        var authData = ref.getAuth();
-        if (authData) {
-            document.cookie = "uid="+authData.uid;
+        var uid = isLoggedIn();
+        if (uid) {
+            document.cookie = "uid="+uid;
+            ref.child("users").child(uid).once('value', function(snapshot) {
+                document.cookie = "handle="+snapshot.val().handle;
+            });
         }
     }
 
-    // var uid = getCookies().uid;
-    // ref.child("users").child(uid).child("username").transcation(function(userdata) {
-    //  if (!userdata) {
-    //      window.location("username.html");
-    //  }
-    // });
+    function isLoggedIn() {
+        var authData = ref.getAuth;
+        if (authData !== null) {
+            return authData.uid;
+        } else {
+            return "";
+        }
+    }
+
+    function loginRedirect() {
+        if (!document.cookie) {
+            console.log("supposed to redir");
+            window.location = "index.html";
+        }
+    }
+
+    function checkHandle() {
+        console.log("called checkHandle");
+        ref.child("users").child(getCookies().uid).child("handle").transaction(function(userdata) {
+             if (userdata) {
+                return userdata;
+             } else {
+                // null or undefined
+                return "user_handle";
+             }
+        }, function(error, committed, snapshot) {
+            console.log(error);
+            console.log(committed);
+            console.log(snapshot.val());
+            if (error) {
+                window.location = "index.html";
+            } else {
+                if (snapshot.val() === "user_handle") {
+                    window.location = "username.html";
+                } else {
+                    window.location = "feed.html";
+                }
+            }
+        });
+    }
 
     function getCookies() {
         var cookieObject = {};
@@ -39,6 +76,8 @@ define(function() {
                     console.log("loggingout");
                     ref.unauth();
                     alert("You are logged out!! going back into the login screen");
+                    document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.cookie = "handle=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                     window.location = "index.html";
                 }),
         updateRecipients: (function updateRecipients(recipients, userId, user) {
@@ -66,7 +105,11 @@ define(function() {
                     });
                 });
             }),
-        getCookies: getCookies
+        getCookies: getCookies,
+        checkHandle: checkHandle,
+        isLoggedIn: isLoggedIn,
+        loginRedirect: loginRedirect
+
     }
     return common;
 });

@@ -18,7 +18,7 @@ define(function(require) {
     	var mixesRef = ref.child("mixes");
     	var message = document.getElementById("messageInput").value;	
     	var mix = {"recievers":receiverId,"sender":sender, 
-    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt};
+    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message};
     	mixesRef.push(mix);
 	}
 

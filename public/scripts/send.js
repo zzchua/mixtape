@@ -80,10 +80,17 @@ define(function(require) {
 	});
 
     document.getElementById("sendMixButton").onclick = function() {
-		for(var i = 0; i < recipients.length; i++){
-			mix.sendMix(recipients[i], coverArt);
+		if(recipients.length > 0){
+			for(var i = 0; i < recipients.length; i++){
+				console.log(recipients[i]);
+				mix.sendMix(recipients[i]);
+			}
+			window.location = "feed.html";
+		}else{
+			//do something here
+			
 		}
-		window.location = "feed.html";
+		
 	};
 
 

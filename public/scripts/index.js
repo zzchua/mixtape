@@ -4,10 +4,11 @@ define(function(require) {
     window.onload = function() {
         // TODO: 2 calls to getAuth, one in common
         var authData = ref.getAuth();
-        document.getElementById("login").onclick = callLogin;
         if (authData) {
             // user is logged in, redirect to feed.
             window.location = "feed.html";
+        } else {
+            document.getElementById("login").onclick = callLogin;
         }
     };
 
@@ -27,14 +28,32 @@ define(function(require) {
                                     profileImage: profileImage
                                     };
                     } else {
-                        alert("user exists in db");
+                        alert("Successfully authenticated");
                     }
                 });
                 // Things to do after auth:
                 // set cookie:
                 document.cookie = "uid=" + authData.uid;
-                // redirect to feed after login:
-                window.location = "feed.html";
+                ref.child("users").child(common.getCookies().uid).child("handle").transaction(function(userdata) {
+                     if (userdata) {
+                        return userdata;
+                     } else {
+                        // null or undefined
+                        return "user_handle";
+                     }
+                }, function(error, committed, snapshot) {
+                    if (error) {
+                        window.location = "index.html";
+                    } else {
+                        if (snapshot.val() === "user_handle") {
+                            window.location = "username.html";
+                        } else {
+                            document.cookie = "handle="+snapshot.val();
+                        }
+                    }
+                });
+                // redirect to username if not created, else go to feed.
+                common.checkHandle();
             }
         });
     }
