@@ -52,13 +52,20 @@ define(function(require) {
                         $("<h2>").text(this.track),$("<h3>").text(this.message)),
                 ($("<div>", {class: "redirect"})).append(
                     ($("<div>", {class: "redirect-icon"}))));
-
+            var commentTail = ($("<div>",{class : "comment"})).append(
+                    $("<input>",{class:"inputs", type:"text", placeholder:"Comment here..."}),
+                    $("<div>",{class:"send"}).append(
+                        $("<input>",{type:"submt", class:"send-btn", value:"Send"})
+                    )
+                );
             var view = $("<div>", {class: "mix"}).append(
                 nameHeader,
-                mixDetail);
-
+                mixDetail,
+                commentTail
+                );
             return view;
         }
+
     }
     return {
         sendMix: sendMix,

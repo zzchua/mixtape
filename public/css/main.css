@@ -142,6 +142,7 @@ nav a:visited {
     font-weight: 700;
     text-transform: uppercase;
     margin-left: auto;
+    text-align: center;
 }
 .request,
 .send-mix,
