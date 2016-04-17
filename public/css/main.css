@@ -98,16 +98,23 @@ nav a:visited {
     width: 6em;
 }
 .detail-text {
+    background-color:#fff;
     padding-left: 1em;
     padding-right: 1em;
 }
 .detail-text h1 {
-    font-size: 1.2em;
+    font-size:.9em;
     margin-bottom: -.7em;
 }
 .detail-text h2 {
-    font-size: 1.2em;
+    font-size: .7em;
     font-weight: 400;
+}
+.detail-text h3 {
+    font-size:.7em;
+    font-style:italic;
+    font-weight:400;
+    color:#aaa;
 }
 .comment {
     margin-top: -.3em;
