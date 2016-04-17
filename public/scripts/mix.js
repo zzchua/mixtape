@@ -16,8 +16,9 @@ define(function(require) {
     	var artist = document.getElementById("artistInput").value;
     	//alert("sending mix " + artist + " " + songAlbum);
     	var mixesRef = ref.child("mixes");
+    	var message = document.getElementById("messageInput").value;	
     	var mix = {"recievers":receiverId,"sender":sender, 
-    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}};
+    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message};
     	mixesRef.push(mix);
 	}
 
