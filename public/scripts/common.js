@@ -58,6 +58,5 @@ define(function() {
 						*/
 			})
 		}
-
 	return common;
 });
