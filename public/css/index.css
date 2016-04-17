@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
+html,
+body {
+    position: relative;
+    background-image: url("../img/index.png");
+    background-size: auto 100%;
+    background-attachment: fixed;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'PT Sans';
+}
+header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -60%);
+    -moz-transform: translate(-50%, -60%);
+    -ms-transform: translate(-50%, -60%);
+    -o-transform: translate(-50%, -60%);
+    transform: translate(-50%, -60%);
+}
+#title,
+#subtitle,
+#login {
+    color: #fff;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+#title h1 {
+    font-size: 3.5em;
+}
+#subtitle {
+    margin-top: -2em;
+}
+h2 {
+    font-weight: 400;
+    font-size: 1em;
+}
+.button {
+    width: 80%;
+    padding: 1em;
+    background-color: #6b2a5f;
+    border-radius: 50px;
+    font-weight: 700;
+}
+.fa-facebook {
+    padding-right: 1em;
+}
