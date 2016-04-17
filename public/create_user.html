@@ -7,11 +7,11 @@
 </head>
 <body>
   First name: <input type='text' id='username_input'  placeholder='Type your username...'>
-  Last name: <input type='password' id='password_input'  placeholder='Type your password...'>
+  Password: <input type='password' id='password_input'  placeholder='Type your password...'>
 
-  <button type="submit" form="form1" value="Submit">Submit</button>
+  <button onclick="createUser()">Submit3</button>
 
-<!-- CHAT MARKUP -->
+<!--
 <div class="example-chat l-demo-container">
   <header>Firebase Chat Demo</header>
 
@@ -28,60 +28,20 @@
     <input type='text' id='messageInput'  placeholder='Type a message...'>
   </footer>
 </div>
-
-<!-- CHAT JAVACRIPT -->
+-->
 <script>
 
-
-
+function createUser() {
+  console.log("subbmmitting");
   // CREATE A REFERENCE TO FIREBASE
-  var ref = new Firebase('https://scorching-heat-6803.firebaseio.com/');
-  var username = $('username_input').val();
-  var password = $('password_input').val();
-  var button = #('usersSubmit');
-  button.keypress(function(e){
-    if (e.keyCode == 13) {
-      ref.push({name: username, password: password});
-    }
-  });
+  var ref = new Firebase('https://scorching-heat-6803.firebaseio.com/users');
+  var username = document.getElementById("username_input").value;
+  var password = document.getElementById("password_input").value; 
+  ref.push({username, password});
+  console.log("submitted");
+}
 
-  // REGISTER DOM ELEMENTS
-  var messageField = $('#messageInput');
-  var nameField = $('#nameInput');
-  var messageList = $('#example-messages');
 
-  // LISTEN FOR KEYPRESS EVENT
-  messageField.keypress(function (e) {
-    if (e.keyCode == 13) {
-      //FIELD VALUES
-      var username = nameField.val();
-      var message = messageField.val();
-
-      //SAVE DATA TO FIREBASE AND EMPTY FIELD
-      messagesRef.push({name:username, text:message});
-      messageField.val('');
-    }
-  });
-
-  // Add a callback that is triggered for each chat message.
-  messagesRef.limitToLast(10).on('child_added', function (snapshot) {
-    //GET DATA
-    var data = snapshot.val();
-    var username = data.name || "anonymous";
-    var message = data.text;
-
-    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-    var messageElement = $("<li>");
-    var nameElement = $("<strong class='example-chat-username'></strong>")
-    nameElement.text(username);
-    messageElement.text(message).prepend(nameElement);
-
-    //ADD MESSAGE
-    messageList.append(messageElement)
-
-    //SCROLL TO BOTTOM OF MESSAGE LIST
-    messageList[0].scrollTop = messageList[0].scrollHeight;
-  });
 </script>
 </body>
 </html>
