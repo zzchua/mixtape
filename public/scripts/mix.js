@@ -10,14 +10,15 @@ define(function(require) {
 		return x;
 	}
 
-    function sendMix(receiverId){
+    function sendMix(receiverId, coverArt){
     	var sender = common.getCookies().uid;
     	var songAlbum = document.getElementById("songAlbumInput").value;
     	var artist = document.getElementById("artistInput").value;
     	//alert("sending mix " + artist + " " + songAlbum);
     	var mixesRef = ref.child("mixes");
+    	var message = document.getElementById("messageInput").value;	
     	var mix = {"recievers":receiverId,"sender":sender, 
-    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}};
+    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt};
     	mixesRef.push(mix);
 	}
 
@@ -68,4 +69,3 @@ define(function(require) {
 		Mix: Mix
 	};
 });
-
