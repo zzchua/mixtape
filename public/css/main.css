@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
-body {
-    background-color: #8edfcf;
+
+html,body {
+    background-image: url("../img/bg.png");
+    background-size: auto 100%;
+    background-attachment:fixed;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -30,12 +33,13 @@ nav a:visited {
     color: #000022;
 }
 .page-title {
-    width: 92%;
+    width: 100%;
     margin: auto;
-    text-align: left;
-    font-size: 1em;
-    text-transform: lowercase;
-    color: #000022;
+    text-align: center;
+    font-size: .6em;
+    text-transform: uppercase;
+    color:#fff;
+    padding:.5em 0em .5em 0em;
 }
 .mix {
     background-color: #fff;
@@ -153,7 +157,7 @@ nav a:visited {
 .accent {
     width: 100%;
     height: 1em;
-    background-color: #fd7a7a;
+    background-color: #6b2a5f;
 }
 .friends {
     margin: auto;
@@ -198,7 +202,7 @@ nav a:visited {
     padding: 0em 1em 0em 1em;
 }
 .pending-mix .name-header {
-    background-color: #fd7a7a;
+    background-color: #6b2a5f;
 }
 .message {
     display: flex;
