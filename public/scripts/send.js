@@ -3,6 +3,7 @@ define(function(require) {
 	var mix = require("./mix");
 	var $ = require("./jquery")
 	var ref = common.ref;
+	document.getElementById("special").onclick = common.logout;
 	var reqsRef = ref.child('requests');
     var recipients = [];
     var artistName = "";
@@ -88,9 +89,9 @@ define(function(require) {
 			window.location = "feed.html";
 		}else{
 			//do something here
-			
+
 		}
-		
+
 	};
 
 

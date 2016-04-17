@@ -2,6 +2,7 @@ define(function(require) {
     var common = require('./common');
     var ref = common.ref;
     // common.loginRedirect();
+    document.getElementById("special").onclick = common.logout;
     var reqsRef = ref.child('requests');
     var recipients = [];
     $(".fa-check-square").click(function() {
