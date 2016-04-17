@@ -15,7 +15,7 @@ define(function(require) {
                 var uid = authData.uid;
                 // if (ref.child("users").child("uid").on
                 // redirect to feed after login:
-                window.location = "feed.html";
+    
             }
         });
     }

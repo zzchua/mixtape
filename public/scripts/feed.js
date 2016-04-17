@@ -1,7 +1,6 @@
-(function() {
-    const ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
-    window.onload = function() {
-        ref.push({username, password});
-    };
-})();
+define(function(require) {
+	var common = require("./common");
+    document.getElementById("special").onclick = common.logout;
+});
+
 
