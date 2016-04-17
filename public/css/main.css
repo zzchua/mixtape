@@ -49,16 +49,16 @@ nav a:visited {
     background-color: #000022;
     display: flex;
 }
-.name-header .user {
+.user {
     padding: .7em;
 }
-.name-header .user .user-circle {
+.name-header .user .user-circle, .friend .user .user-circle {
     width: 3em;
     height: 3em;
     border-radius: 50%;
     overflow: hidden;
 }
-.name-header .user .user-circle img {
+.name-header .user .user-circle img, .friend .user .user-circle img {
     width: 3em;
 }
 .name-header h1 {
@@ -118,13 +118,12 @@ nav a:visited {
     text-transform: uppercase;
     margin-left: auto;
 }
-.request {
+.request, .send-mix {
     width: 92%;
     margin: auto;
     margin-bottom: 1em;
-    background-color: #ccc;
 }
-.request .input {
+.request .inputs {
     height: 5em;
     width: 100%;
     border-width: 0px;
@@ -135,7 +134,7 @@ nav a:visited {
     box-sizing: border-box;
     padding: 0em 1em 0em 1em;
 }
-.request .send-btn {
+.request .send-btn, .send-mix .send-btn {
     border: 0px;
     width: 100%;
     height: 3em;
@@ -155,4 +154,42 @@ nav a:visited {
     margin:auto;
     width:92%;
     background-color:#fff;
+    
+}
+.friend {
+    width: 100%;
+    display: flex;
+}
+.friend-name h1 {
+    flex: 1;
+    color: #000022;
+    font-size: 1em;
+    padding-top:1em;
+    padding-left:.3em;
+    padding-bottom:1em;
+    font-weight:400;
+    margin-right:auto;
+}
+.check {
+    padding:1.5em 1.5em 0em 0em;
+    margin-left:auto;
+}
+.check .fa {
+    color:#ddd;
+}
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+.send-mix .inputs {
+    height: 4em;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #c8c8c8;
+    color: #000022;
+    font-family: 'PT Sans';
+    font-weight: 400;
+    box-sizing: border-box;
+    padding: 0em 1em 0em 1em;
 }
