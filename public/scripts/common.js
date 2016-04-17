@@ -12,8 +12,8 @@ define(function() {
         }
     }
 
-    var screenHeight = $(window).height();
-    $('body').css("background-size", "auto " + screenHeight + "px");
+    var screenHeight = window.height;
+    document.querySelector('body').style.backgroundSize= "auto " + screenHeight + "px";
 
     function loginRedirect() {
         if (!document.cookie) {
@@ -75,7 +75,7 @@ define(function() {
 		}
 		// throw "Type: " + type + " is invalid!";
 	}
-	
+
 	function Alert(obj) {
 		this.type = (obj.type);
 		this.data = obj.data;
