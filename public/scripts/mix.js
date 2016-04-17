@@ -11,16 +11,14 @@ define(function(require) {
 	}
 
     function sendMix(receiverId){
-    	var receiver = receiverId;
     	var sender = common.getCookies().uid;
     	var songAlbum = document.getElementById("songAlbumInput").value;
     	var artist = document.getElementById("artistInput").value;
-    	alert("sending mix " + artist + " " + songAlbum);
+    	//alert("sending mix " + artist + " " + songAlbum);
     	var mixesRef = ref.child("mixes");
-    	var mix = {"recievers":{"receiver":receiver},"sender":sender, 
+    	var mix = {"recievers":receiverId,"sender":sender, 
     		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}};
     	mixesRef.push(mix);
-    	window.location = "feed.html";
 	}
 
     function createMix(){
