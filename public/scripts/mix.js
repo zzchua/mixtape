@@ -46,10 +46,10 @@ define(function(require) {
                 ($("<div>", {class: "user-name"}).append($("<h1>").text(this.sender))));
             var mixDetail = ($("<div>", {class: "mix-detail"})).append(
                 ($("<div>", {class: "cover"})).append(
-                    '<img src="http://s3.amazonaws.com/uploads.prod.gobigwin.com/app/public/spree/products/1724/original/tokyopc_champ_cd.png?1368737706" />'),
+                    '<img src='+this.cover+' />'),
                 ($("<div>", {class: "detail-text"})).append(
                         ($("<h1>").text(this.artist)),
-                        $("<h2>").text(this.album)),
+                        $("<h2>").text(this.album),$("<h3>").text(this.message)),
                 ($("<div>", {class: "redirect"})).append(
                     ($("<div>", {class: "redirect-icon"}))));
 
