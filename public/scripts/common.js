@@ -9,16 +9,25 @@ define(function() {
     }
 
     function checkHandle() {
+        console.log("called checkHandle");
         ref.child("users").child(getCookies().uid).child("handle").transaction(function(userdata) {
-             return userdata;
-        }, function(error, committed) {
+             if (userdata) {
+                return userdata;
+             } else {
+                // null or undefined
+                return "user_handle";
+             }
+        }, function(error, committed, snapshot) {
+            console.log(error);
+            console.log(committed);
+            console.log(snapshot.val());
             if (error) {
                 window.location = "index.html";
             } else {
-                if (committed) {
-                    window.location = "feed.html";
-                } else {
+                if (snapshot.val() === "user_handle") {
                     window.location = "username.html";
+                } else {
+                    window.location = "feed.html";
                 }
             }
         });
