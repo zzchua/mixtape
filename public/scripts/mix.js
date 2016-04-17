@@ -49,7 +49,7 @@ define(function(require) {
                     '<img src='+this.cover+' />'),
                 ($("<div>", {class: "detail-text"})).append(
                         ($("<h1>").text(this.artist)),
-                        $("<h2>").text(this.album),$("<h3>").text(this.message)),
+                        $("<h2>").text(this.track),$("<h3>").text(this.message)),
                 ($("<div>", {class: "redirect"})).append(
                     ($("<div>", {class: "redirect-icon"}))));
 
