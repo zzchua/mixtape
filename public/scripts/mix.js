@@ -34,14 +34,15 @@ define(function(require) {
         this.spotify = check(obj.spotify);
     }
 
-    var userCircleDiv =
-        $('<div class="user-circle"><img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/12715794_1150327101644297_1371427251795969270_n.jpg?oh=f49c9852eb090c3aa04516d089c7ccb7&oe=57BE0CC5"/></div>');
+   
     Mix.prototype = {
         toString: function() {
             return JSON.stringify(this);
         },
 
         getView: function() {
+            var pic = this.album;
+            var userCircleDiv = $('<div class="user-circle"><img src='+pic+'></div>');
             var nameHeader = ($("<div>", {class: "name-header"})).append(
                 $("<div>", {class: "user"}).append(userCircleDiv),
                 ($("<div>", {class: "user-name"}).append($("<h1>").text(this.sender))));
