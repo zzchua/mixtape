@@ -9,6 +9,8 @@
 	    <link type="text/css" rel="stylesheet" href="css/main.css"/>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+    	<script data-main="scripts/send" src="scripts/require.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<nav> 
@@ -24,10 +26,10 @@
 				<h1>Send a Mix</h1>
 		</div>
 		<div class="send-mix">
-			<input type="text" class="inputs" placeholder="artist" /> 
-			<input type="text" class="inputs" placeholder="album or song" /> 
+			<input type="text" class="inputs" id="artistInput" placeholder="artist" /> 
+			<input type="text" class="inputs" id="songAlbumInput" placeholder="album or song" /> 
 			<div class="send">
-				<input type="submit" class="send-btn" value="Send">
+				<input type="button" class="send-btn" id="sendMixButton" value="Send">
 			</div>
 			<div class="accent"></div>
 		</div>
