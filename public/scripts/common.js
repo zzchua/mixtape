@@ -2,9 +2,10 @@ define(function() {
     var ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
     // if no cookies set and logged in, set cookie
     if (!document.cookie) {
-        var uid = isLoggedIn();
-        if (uid) {
-            document.cookie = "uid="+uid;
+        var authData = isLoggedIn();
+        if (authData) {
+            document.cookie = "uid="+authData.uid;
+            document.cookie = "displayName="+authData.facebook.displayName;
             ref.child("users").child(uid).once('value', function(snapshot) {
                 document.cookie = "handle="+snapshot.val().handle;
             });
@@ -14,7 +15,7 @@ define(function() {
     function isLoggedIn() {
         var authData = ref.getAuth;
         if (authData !== null) {
-            return authData.uid;
+            return authData;
         } else {
             return "";
         }
@@ -29,47 +30,40 @@ define(function() {
 
     function checkHandle() {
         console.log("called checkHandle");
-		ref.child("users").child(getCookies().uid).once('value', function(snapshot) {
-			var missing = (snapshot.val().handle == null);
-			alert("common.js:34: Handle exists? " + missing);
-			if (missing) {
-				window.location = "username.html";
-			} else {
-				window.location = "index.html";
-			}
-		});
-		// ref.child("users").child(getCookies().uid).child("handle").transaction(function(userdata) {
-        //      if (userdata) {
-        //         return userdata;
-        //      } else {
-        //         // null or undefined
-        //         return "user_handle";
-        //      }
-        // }, function(error, committed, snapshot) {
-        //     console.log(error);
-        //     console.log(committed);
-        //     console.log(snapshot.val());
-        //     if (error) {
-        //         window.location = "index.html";
-        //     } else {
-        //         if (snapshot.val() === "user_handle") {
-        //             window.location = "username.html";
-        //         } else {
-        //             window.location = "feed.html";
-        //         }
-        //     }
-        // });
+        ref.child("users").child(getCookies().uid).child("handle").transaction(function(userdata) {
+             if (userdata) {
+                return userdata;
+             } else {
+                // null or undefined
+                return "";
+             }
+        }, function(error, committed, snapshot) {
+            console.log(error);
+            console.log(committed);
+            console.log(snapshot.val());
+            if (error) {
+                window.location = "index.html";
+            } else {
+                if (snapshot.val() === "") {
+                    window.location = "username.html";
+                } else {
+                    window.location = "feed.html";
+                }
+            }
+        });
     }
 
     function getCookies() {
         var cookieObject = {};
+        console.log(cookieObject);
         var cookieArray = document.cookie.split(";");
         for (var i = 0; i < cookieArray.length; i++) {
             var keyVal = cookieArray[i].split("=");
             if (keyVal) {
-                cookieObject[keyVal[0]] = keyVal[1];
+                cookieObject[keyVal[0].trim()] = keyVal[1].trim();
             }
         }
+        console.log(cookieObject);
         return cookieObject;
         /*
         {
@@ -86,6 +80,7 @@ define(function() {
                     ref.unauth();
                     alert("You are logged out!! going back into the login screen");
                     document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.cookie = "displayName=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                     document.cookie = "handle=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                     window.location = "index.html";
                 }),
