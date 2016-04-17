@@ -9,6 +9,7 @@
 	    <link type="text/css" rel="stylesheet" href="css/main.css"/>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
     	<script data-main="scripts/send" src="scripts/require.js" type="text/javascript"></script>
 	</head>
@@ -27,7 +28,17 @@
 		</div>
 		<div class="send-mix">
 			<input type="text" class="inputs" id="artistInput" placeholder="artist" /> 
-			<input type="text" class="inputs" id="songAlbumInput" placeholder="album or song" />
+			<div id="fucking-artist-drop">
+			</div>
+			<div class="song-album">
+				<div id="toggle-type">
+					<div id="toggle-song"></div>
+					<div id="toggle-album"></div>
+					<input type="text" class="inputs" id="songInput" placeholder="song" />
+					<div id="fucking-song-drop">
+					</div>
+				</div>
+			</div>
 			<input type="text" class="inputs" id="messageInput" placeholder="comment" /> 
 			<div class="send">
 				<input type="button" class="send-btn" id="sendMixButton" value="Send">
