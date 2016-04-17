@@ -6,14 +6,6 @@ define(function(require) {
 	var mix = require("./mix");
     	document.getElementById("special").onclick = common.logout;
 	//function getFeed(){
-	var tempMix = new mix.Mix({
-	"album":"Sgt. Pepper's Lonely Hearts Club Band",
-	"artist":"The Beatles",
-	"comments":"",
-	"message":"EEEEEEK",
-	"reciever":1,
-	"sender":2,
-	"track":"With a Little Help From My Friends"});
 	var mixTitleDiv = $("#mixTitle");
 	var mixes = [];
 	var mixRef = ref.child("mixes");
