@@ -26,7 +26,7 @@ header {
 }
 #title,
 #subtitle,
-#login {
+#login, #create-username, #send-username {
     color: #fff;
     width: 100%;
     margin: auto;
@@ -34,6 +34,9 @@ header {
 }
 #title h1 {
     font-size: 3.5em;
+}
+#create-username h1 {
+    font-size:2.5em;
 }
 #subtitle {
     margin-top: -2em;
@@ -43,12 +46,25 @@ h2 {
     font-size: 1em;
 }
 .button {
-    width: 80%;
+    width: 100%;
     padding: 1em;
     background-color: #6b2a5f;
     border-radius: 50px;
     font-weight: 700;
+    border:none;
 }
 .fa-facebook {
     padding-right: 1em;
+}
+.username-input {
+    width: 100%;;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 50px;
+    font-weight: 400;
+    border:none;
+    color: #000022;
+    margin-top:-2em;
+    margin-bottom:1em;
+    box-sizing: border-box;
 }

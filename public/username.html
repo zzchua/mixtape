@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-        <!-- <script src="scripts/index.js" type="text/javascript"></script> -->
-        <script data-main="scripts/username" src="scripts/require.js" type="text/javascript"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <!-- <script src="scripts/index.js" type="text/javascript"></script> -->
+    <script data-main="scripts/index" src="scripts/require.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	    <title>mixtape</title>
+	    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 </head>
 <body>
-    <div id="create-username">
-        Create your username:<br>
-        <input type="text" name="handle" id="handle-input" placeholder="e.g. johndoe123" autocomplete="on"><br>
-        <button id="send-username" value="Send">Submit</button>
-    </div>
+	<header>
+	    <div id="create-username">
+	        <h1>Create your username</h1>
+	    </div>
+	    <input type="text" name="handle" id="handle-input" placeholder="e.g. johndoe123" autocomplete="on" class="username-input">
+	    <button id="send-username" value="Send" class="button">SUBMIT</button>
+	</header>
 </body>
 </html>

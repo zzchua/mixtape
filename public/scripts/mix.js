@@ -12,7 +12,7 @@ define(function(require) {
 
     function sendMix(receiverId, coverArt){
     	var sender = common.getCookies().uid;
-    	var songAlbum = document.getElementById("songAlbumInput").value;
+    	var songAlbum = document.getElementById("songInput").value;
     	var artist = document.getElementById("artistInput").value;
     	//alert("sending mix " + artist + " " + songAlbum);
     	var mixesRef = ref.child("mixes");
