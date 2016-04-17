@@ -28,15 +28,25 @@ define(function(require) {
 				"reciever":fields.recievers,
 				"sender":fields.sender,
 				"track":fields.songAlbum,
-				"cover":fields.cover
+				"cover":fields.cover,
+				"spotify":fields.spotify
 		 		});
 		 		mixes.push(mixtape);
 
 			 });
+			
 			for (var i in mixes) {
 				var m = mixes[i];
-				mixTitleDiv.after(m.getView());
+				ref.child("users").orderByChild("displayName").equalTo(m.sender).once("value", function(snapshot){
+	                snapshot.forEach(function(data) {
+					 	m.album = data.val().profileImage;
+					 	//alert(m.album);
+					 	mixTitleDiv.after(m.getView());
+			 		});
+            	});
+				
 			}
+			
 	});
 
 });

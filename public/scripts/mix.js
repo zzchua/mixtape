@@ -9,7 +9,7 @@ define(function(require) {
         return x;
     }
 
-    function sendMix(receiverId, coverArt){
+    function sendMix(receiverId, coverArt, spotify){
         var sender = common.getCookies().displayName;
         var songAlbum = document.getElementById("songInput").value;
         var artist = document.getElementById("artistInput").value;
@@ -17,7 +17,7 @@ define(function(require) {
         var mixesRef = ref.child("mixes");
         var message = document.getElementById("messageInput").value;
         var mix = {"recievers":receiverId,"sender":sender,
-            "songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt};
+            "songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt, "spotify":spotify};
         mixesRef.push(mix);
     }
 
@@ -31,16 +31,18 @@ define(function(require) {
         this.sender = check(obj.sender);
         this.track = check(obj.track);
         this.cover = check(obj.cover);
+        this.spotify = check(obj.spotify);
     }
 
-    var userCircleDiv =
-        $('<div class="user-circle"><img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/12715794_1150327101644297_1371427251795969270_n.jpg?oh=f49c9852eb090c3aa04516d089c7ccb7&oe=57BE0CC5"/></div>');
+   
     Mix.prototype = {
         toString: function() {
             return JSON.stringify(this);
         },
 
         getView: function() {
+            var pic = this.album;
+            var userCircleDiv = $('<div class="user-circle"><img src='+pic+'></div>');
             var nameHeader = ($("<div>", {class: "name-header"})).append(
                 $("<div>", {class: "user"}).append(userCircleDiv),
                 ($("<div>", {class: "user-name"}).append($("<h1>").text(this.sender))));
@@ -58,11 +60,15 @@ define(function(require) {
                         $("<input>",{type:"submt", class:"send-btn", value:"Send"})
                     )
                 );
-            var view = $("<div>", {class: "mix"}).append(
+            var view = $("<a target='_blank' class='no-line' href='" + this.spotify + "'/>").append(
+            $("<div>", {class: "mix"}).append(
                 nameHeader,
                 mixDetail,
                 commentTail
-                );
+                )
+            );
+
+
             return view;
         }
 
