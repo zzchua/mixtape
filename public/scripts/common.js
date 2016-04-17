@@ -67,6 +67,40 @@ define(function() {
         */
     }
 
+	function checkType(type) {
+		for (var key in Alert.TYPES) {
+			if (Alert.TYPE[key] === type) {
+				return type;
+			}
+		}
+		// throw "Type: " + type + " is invalid!";
+	}
+	
+	function Alert(obj) {
+		this.type = (obj.type);
+		this.data = obj.data;
+	}
+
+	Alert.TYPES = {
+		rreq: "rreq",
+		freq: "freq",
+	}
+
+	function friendRequestAlert(friendRequest) {
+		return new Alert({
+			type: Alert.TYPES.freq,
+			data: friendRequest
+		});
+	}
+
+	function recRequestAlert(recRequest) {
+		var obj = {
+			type: Alert.TYPES.rreq,
+			data: recRequest
+		};
+		return new Alert(obj);
+	}
+
     var common = {
         ref: ref,
         logout: (function logout() {
@@ -92,21 +126,31 @@ define(function() {
                     }
                 return recipients;
             }),
-        sendRequests: (function sendRequests(recipients, reqMessage) {
-                var reqsRef = ref.child('requests');
-                $.each(recipients, function(i, val) {
-                    reqsRef
-                    .push({
-                        sender: 'facebook:10156785213465257',
-                        receiver: val,
-                        message: reqMessage
-                    });
-                });
-            }),
-        getCookies: getCookies,
+        sendRequests: (function sendRequests(uid, recipients, reqMessage) {
+			var reqsRef = ref.child('requests');
+			$.each(recipients, function(i, val) {
+				reqsRef
+					.push({
+						sender: uid,
+						receiver: val,
+						message: reqMessage
+					});
+			});
+			var usersRef = ref.child('users');
+			$.each(recipients, function(i, recUID) {
+				var alert = recRequestAlert({
+						uid: uid,
+						message: reqMessage
+				});
+				usersRef.child(recUID).child('alerts').push({
+					'time': Firebase.ServerValue.TIMESTAMP,
+					'alert': alert,
+				});
+			});
+		}),
+		getCookies: getCookies,
         checkHandle: checkHandle,
-        loginRedirect: loginRedirect
-
+        loginRedirect: loginRedirect,
     }
     return common;
 });
