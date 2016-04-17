@@ -12,6 +12,8 @@ define(function() {
         }
     }
 
+    var screenHeight = $(window).height();
+    $(body).css("background-size", "auto " + screenHeight + "px");
 
     function loginRedirect() {
         if (!document.cookie) {
