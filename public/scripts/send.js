@@ -66,24 +66,24 @@ define(function(require) {
 			$(".drop-option").click(function() {
 		    	trackName = $(this).text();
 		    	$("#fucking-song-drop").empty();
-		    	$("#songAlbumInput").val(trackName);
+		    	$("#songInput").val(trackName);
 
 		    });
 		});
 	}
 
 	$("#fucking-song-drop").hide();
-	$("#songAlbumInput").keyup(function() {
+	$("#songInput").keyup(function() {
 		$("#fucking-song-drop").show();
-		var query = $("#songAlbumInput").val();
+		var query = $("#songInput").val();
 		searchTracks(query);
 	});
 
     document.getElementById("sendMixButton").onclick = function() {
 		if(recipients.length > 0){
 			for(var i = 0; i < recipients.length; i++){
-				console.log(recipients[i]);
-				mix.sendMix(recipients[i]);
+				console.log(recipients[i], coverArt);
+				mix.sendMix(recipients[i], coverArt);
 			}
 			window.location = "feed.html";
 		}else{

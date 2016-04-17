@@ -18,13 +18,10 @@ define(function(require) {
     	var mixesRef = ref.child("mixes");
     	var message = document.getElementById("messageInput").value;	
     	var mix = {"recievers":receiverId,"sender":sender, 
-    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message};
+    		"songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt};
     	mixesRef.push(mix);
 	}
 
-    function createMix(){
-		var mix = {"album":"Sgt. Pepper's Lonely Hearts Club Band","artist":"The Beatles","comments":"","message":"EEEEEEK","reciever":1,"sender":2,"track":"With a Little Help From My Friends"} ;
-	}
 
     function Mix(obj) {
 		this.album = check(obj.album);
@@ -34,6 +31,7 @@ define(function(require) {
 		this.reciever = check(obj.reciever);
 		this.sender = check(obj.sender);
 		this.track = check(obj.track);
+		this.cover = check(obj.cover);
     }
 
 	var userCircleDiv =
@@ -65,7 +63,6 @@ define(function(require) {
 	}
 	return {
 		sendMix: sendMix,
-		createMix: createMix,
 		Mix: Mix
 	};
 });
