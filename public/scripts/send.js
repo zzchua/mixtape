@@ -18,8 +18,25 @@ define(function(require) {
     var keyVal = window.location.search.replace("?", "");
     var arr = keyVal.split("=");
     var recipientId = arr[1];
-    var box = $("#"+recipientId).find("i");
-    recipients = common.updateRecipients(recipients, recipientId, box);
+    console.log(recipientId);
+    var user = document.getElementById('facebook:10153429321436389').children[2].children[0]; 
+    console.log(user);
+    recipients = changeColor(recipients, recipientId, user);
+
+	function changeColor(recipients, userId, user) {
+                    if ($(user).hasClass("active")) {
+                        $(user).removeClass("active");
+                        $(user).css("color","#ddd");
+                        recipients.splice($.inArray(userId, recipients), 1);
+                        console.log(recipients);
+                    } else {
+                        $(user).addClass("active");
+                        $(user).css("color","#6b2a5f");
+                        recipients.push(userId);
+                        console.log(recipients);
+                    }
+                return recipients;
+            }
 
     function searchArtists(query) {
         var jsonresult = "";

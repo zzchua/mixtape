@@ -37,13 +37,7 @@ define(function(require) {
 			
 			for (var i in mixes) {
 				var m = mixes[i];
-				ref.child("users").orderByChild("displayName").equalTo(m.sender).once("value", function(snapshot){
-	                snapshot.forEach(function(data) {
-					 	m.album = data.val().profileImage;
-					 	//alert(m.album);
-					 	mixTitleDiv.after(m.getView());
-			 		});
-            	});
+            	mixTitleDiv.after(m.getView());
 				
 			}
 			

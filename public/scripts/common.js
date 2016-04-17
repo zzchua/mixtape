@@ -113,6 +113,7 @@ define(function() {
                     window.location = "index.html";
                 }),
         updateRecipients: (function updateRecipients(recipients, userId, user) {
+                    console.log(user);  
                     if ($(user).hasClass("active")) {
                         $(user).removeClass("active");
                         $(user).css("color","#ddd");
