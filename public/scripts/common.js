@@ -8,6 +8,22 @@ define(function() {
         }
     }
 
+    function checkHandle() {
+        ref.child("users").child(getCookies().uid).child("handle").transaction(function(userdata) {
+             return userdata;
+        }, function(error, committed) {
+            if (error) {
+                window.location = "index.html";
+            } else {
+                if (committed) {
+                    window.location = "feed.html";
+                } else {
+                    window.location = "username.html";
+                }
+            }
+        });
+    }
+
     function getCookies() {
         var cookieObject = {};
         var cookieArray = document.cookie.split(";");
@@ -59,7 +75,8 @@ define(function() {
                     });
                 });
             }),
-        getCookies: getCookies
+        getCookies: getCookies,
+        checkHandle: checkHandle
     }
     return common;
 });

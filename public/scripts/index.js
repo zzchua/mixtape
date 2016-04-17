@@ -28,28 +28,14 @@ define(function(require) {
                                     profileImage: profileImage
                                     };
                     } else {
-                        alert("user exists in db");
+                        alert("Successfully authenticated");
                     }
                 });
                 // Things to do after auth:
                 // set cookie:
                 document.cookie = "uid=" + authData.uid;
                 // redirect to username if not created, else go to feed.
-                ref.child("users").child(authData.uid).child("handle").transaction(function(userdata) {
-                    console.log(userdata)
-                     return userdata;
-                }, function(error, committed) {
-                    if (error) {
-                        window.location = "index.html";
-                    } else {
-                        if (committed) {
-                            window.location = "feed.html";
-                        } else {
-                            window.location = "username.html";
-                        }
-                    }
-                });
-
+                common.checkHandle();
             }
         });
     }
