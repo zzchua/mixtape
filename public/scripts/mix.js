@@ -9,7 +9,7 @@ define(function(require) {
         return x;
     }
 
-    function sendMix(receiverId, coverArt){
+    function sendMix(receiverId, coverArt, spotify){
         var sender = common.getCookies().displayName;
         var songAlbum = document.getElementById("songInput").value;
         var artist = document.getElementById("artistInput").value;
@@ -17,7 +17,7 @@ define(function(require) {
         var mixesRef = ref.child("mixes");
         var message = document.getElementById("messageInput").value;
         var mix = {"recievers":receiverId,"sender":sender,
-            "songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt};
+            "songAlbum":songAlbum, "artist":artist, "comments":{"comment":""}, "message":message, "cover":coverArt, "spotify":spotify};
         mixesRef.push(mix);
     }
 
@@ -31,6 +31,7 @@ define(function(require) {
         this.sender = check(obj.sender);
         this.track = check(obj.track);
         this.cover = check(obj.cover);
+        this.spotify = check(obj.spotify);
     }
 
     var userCircleDiv =
