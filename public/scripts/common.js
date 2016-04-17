@@ -2,9 +2,25 @@ define(function() {
     var ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
     // if no cookies set and logged in, set cookie
     if (!document.cookie) {
-        var authData = ref.getAuth();
-        if (authData) {
-            document.cookie = "uid="+authData.uid;
+        var uid = isLoggedIn();
+        if (uid) {
+            document.cookie = "uid="+uid;
+        }
+    }
+
+    function isLoggedIn() {
+        var authData = ref.getAuth;
+        if (authData !== null) {
+            return authData.uid;
+        } else {
+            return "";
+        }
+    }
+
+    function loginRedirect() {
+        if (!document.cookie) {
+            console.log("supposed to redir");
+            window.location = "index.html";
         }
     }
 
@@ -57,6 +73,7 @@ define(function() {
                     console.log("loggingout");
                     ref.unauth();
                     alert("You are logged out!! going back into the login screen");
+                    document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                     window.location = "index.html";
                 }),
         updateRecipients: (function updateRecipients(recipients, userId, user) {
@@ -85,7 +102,10 @@ define(function() {
                 });
             }),
         getCookies: getCookies,
-        checkHandle: checkHandle
+        checkHandle: checkHandle,
+        isLoggedIn: isLoggedIn,
+        loginRedirect: loginRedirect
+
     }
     return common;
 });

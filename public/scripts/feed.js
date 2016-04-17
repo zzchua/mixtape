@@ -1,10 +1,11 @@
 define(function(require) {
 	var common = require("./common");
 	var ref = common.ref;
-	var mix = require("./mix");
-    document.getElementById("special").onclick = common.logout;
-	
+	// check if logged in:
+	common.loginRedirect();
 
+	var mix = require("./mix");
+    	document.getElementById("special").onclick = common.logout;
 	//function getFeed(){
 	var tempMix = new mix.Mix({
 	"album":"Sgt. Pepper's Lonely Hearts Club Band",
@@ -17,7 +18,6 @@ define(function(require) {
 	var mixTitleDiv = $("#mixTitle");
 	var mixes = [tempMix];
 	var mixRef = ref.child("mixes");
-	
 	var artist = "";
 	console.log(common.getCookies().uid);
 	mixRef.orderByChild("recievers").equalTo(common.getCookies().uid).on("value", function(snapshot) {
@@ -48,7 +48,7 @@ define(function(require) {
 				mixTitleDiv.after(m.getView());
 			}
 	});
-		
+
 	//}
 });
 
