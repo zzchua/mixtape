@@ -35,16 +35,20 @@ define(function(require) {
 
 			 });
 			
-			for (var i in mixes) {
+			for (var i = 0; i < mixes.length; i++) {
 				var m = mixes[i];
-				ref.child("users").orderByChild("displayName").equalTo(m.sender).once("value", function(snapshot){
-	                snapshot.forEach(function(data) {
-					 	m.album = data.val().profileImage;
-					 	//alert(m.album);
-					 	mixTitleDiv.after(m.getView());
-			 		});
-            	});
-				
+	
+				ref.child("users").orderByChild("displayName").equalTo(mixes[i].sender).once("value", function(snapshot){  
+	      
+	            	var shot = snapshot.val();
+	            	var fbID = Object.keys(shot)[0];
+	            	this.album = shot[fbID].profileImage;
+
+  					mixTitleDiv.after(this.getView());	
+  					
+  			
+	            }, m);
+				//mixTitleDiv.after(m.getView());	
 			}
 			
 	});
