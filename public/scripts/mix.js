@@ -4,9 +4,9 @@ define(function(require) {
     var ref = common.ref;
 
     function check(x) {
-		if (x === undefined) {
-			throw x.toString() + " is undefined";
-		}
+		// if (x === undefined) {
+		// 	throw "x is undefined";
+		// }
 		return x;
 	}
 
