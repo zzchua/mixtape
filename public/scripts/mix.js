@@ -59,11 +59,15 @@ define(function(require) {
                         $("<input>",{type:"submt", class:"send-btn", value:"Send"})
                     )
                 );
-            var view = $("<div>", {class: "mix"}).append(
+            var view = $("<a target='_blank' class='no-line' href='" + this.spotify + "'/>").append(
+            $("<div>", {class: "mix"}).append(
                 nameHeader,
                 mixDetail,
                 commentTail
-                );
+                )
+            );
+
+
             return view;
         }
 
