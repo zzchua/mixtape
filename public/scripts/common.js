@@ -8,13 +8,6 @@ define(function() {
         }
     }
 
-    // var uid = getCookies().uid;
-    // ref.child("users").child(uid).child("username").transcation(function(userdata) {
-    //  if (!userdata) {
-    //      window.location("username.html");
-    //  }
-    // });
-
     function getCookies() {
         var cookieObject = {};
         var cookieArray = document.cookie.split(";");

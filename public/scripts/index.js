@@ -4,10 +4,11 @@ define(function(require) {
     window.onload = function() {
         // TODO: 2 calls to getAuth, one in common
         var authData = ref.getAuth();
-        document.getElementById("login").onclick = callLogin;
         if (authData) {
             // user is logged in, redirect to feed.
             window.location = "feed.html";
+        } else {
+            document.getElementById("login").onclick = callLogin;
         }
     };
 
@@ -33,8 +34,22 @@ define(function(require) {
                 // Things to do after auth:
                 // set cookie:
                 document.cookie = "uid=" + authData.uid;
-                // redirect to feed after login:
-                window.location = "feed.html";
+                // redirect to username if not created, else go to feed.
+                ref.child("users").child(authData.uid).child("handle").transaction(function(userdata) {
+                    console.log(userdata)
+                     return userdata;
+                }, function(error, committed) {
+                    if (error) {
+                        window.location = "index.html";
+                    } else {
+                        if (committed) {
+                            window.location = "feed.html";
+                        } else {
+                            window.location = "username.html";
+                        }
+                    }
+                });
+
             }
         });
     }
