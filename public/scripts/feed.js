@@ -28,7 +28,8 @@ define(function(require) {
 				"reciever":fields.recievers,
 				"sender":fields.sender,
 				"track":fields.songAlbum,
-				"cover":fields.cover
+				"cover":fields.cover,
+				"spotify":fields.spotify
 		 		});
 		 		mixes.push(mixtape);
 
