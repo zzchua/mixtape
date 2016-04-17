@@ -26,10 +26,21 @@ nav .nav-icons {
     height: 3.5em;
     position: absolute;
 }
+nav .icon {
+    padding-left: 2em;
+}
+nav .focus {
+    width:3em;
+    height:.35em;
+    background-color:#6b2a5f;
+    position: absolute;
+    bottom:0;
+    margin-left:-.9em;
+}
 nav a + a,
 nav a:visited {
     display: inline;
-    padding-left: 2em;
+    
     color: #000022;
 }
 .page-title {
