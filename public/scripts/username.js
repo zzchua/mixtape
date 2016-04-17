@@ -11,6 +11,7 @@ define(function(require) {
             },
             function(error) {
                 if (!error) {
+                    document.cookie = "handle="+handle
                     window.location = "feed.html";
                 } else {
                     alert(error);

@@ -3,7 +3,6 @@ define(function(require) {
 	var ref = common.ref;
 	// check if logged in:
 	common.loginRedirect();
-
 	var mix = require("./mix");
     	document.getElementById("special").onclick = common.logout;
 	//function getFeed(){

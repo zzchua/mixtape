@@ -1,7 +1,7 @@
 define(function(require) {
     var common = require('./common');
     var ref = common.ref;
-    common.loginRedirect();
+    // common.loginRedirect();
     var reqsRef = ref.child('requests');
     var recipients = [];
     $(".fa-check-square").click(function() {

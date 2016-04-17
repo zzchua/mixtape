@@ -34,6 +34,24 @@ define(function(require) {
                 // Things to do after auth:
                 // set cookie:
                 document.cookie = "uid=" + authData.uid;
+                ref.child("users").child(common.getCookies().uid).child("handle").transaction(function(userdata) {
+                     if (userdata) {
+                        return userdata;
+                     } else {
+                        // null or undefined
+                        return "user_handle";
+                     }
+                }, function(error, committed, snapshot) {
+                    if (error) {
+                        window.location = "index.html";
+                    } else {
+                        if (snapshot.val() === "user_handle") {
+                            window.location = "username.html";
+                        } else {
+                            document.cookie = "handle="+snapshot.val();
+                        }
+                    }
+                });
                 // redirect to username if not created, else go to feed.
                 common.checkHandle();
             }

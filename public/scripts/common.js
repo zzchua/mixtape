@@ -5,6 +5,9 @@ define(function() {
         var uid = isLoggedIn();
         if (uid) {
             document.cookie = "uid="+uid;
+            ref.child("users").child(uid).once('value', function(snapshot) {
+                document.cookie = "handle="+snapshot.val().handle;
+            });
         }
     }
 
@@ -74,6 +77,7 @@ define(function() {
                     ref.unauth();
                     alert("You are logged out!! going back into the login screen");
                     document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                    document.cookie = "handle=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                     window.location = "index.html";
                 }),
         updateRecipients: (function updateRecipients(recipients, userId, user) {
