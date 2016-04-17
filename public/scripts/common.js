@@ -1,5 +1,8 @@
-const ref = new Firebase("https://scorching-heat-6803.firebaseio.com");
-window.onload = function() {
+define(function() {
+    var common = {
+        ref: new Firebase("https://scorching-heat-6803.firebaseio.com")
+    };
+    window.onload = function() {
 	console.log("test");
 	function logout() {
 	    console.log("loggingout");
@@ -8,3 +11,5 @@ window.onload = function() {
 	    window.location = "index.html";
 	}
 }
+    return common;
+});

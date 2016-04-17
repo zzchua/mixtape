@@ -52,19 +52,20 @@ nav a:visited {
 .user {
     padding: .7em;
 }
-.name-header .user .user-circle, .friend .user .user-circle {
+.name-header .user .user-circle,
+.friend .user .user-circle {
     width: 3em;
     height: 3em;
     border-radius: 50%;
     overflow: hidden;
 }
-.name-header .user .user-circle img, .friend .user .user-circle img {
+.name-header .user .user-circle img,
+.friend .user .user-circle img {
     width: 3em;
 }
 .name-header h1 {
     flex: 1;
     color: #fff;
-    background-color: #000022;
     font-size: 1em;
     padding: 1em;
     text-transform: uppercase;
@@ -118,7 +119,9 @@ nav a:visited {
     text-transform: uppercase;
     margin-left: auto;
 }
-.request, .send-mix, .pending {
+.request,
+.send-mix,
+.pending-mix {
     width: 92%;
     margin: auto;
     margin-bottom: 1em;
@@ -134,7 +137,9 @@ nav a:visited {
     box-sizing: border-box;
     padding: 0em 1em 0em 1em;
 }
-.request .send-btn, .send-mix .send-btn {
+.request .send-btn,
+.send-mix .send-btn,
+.message .send-btn {
     border: 0px;
     width: 100%;
     height: 3em;
@@ -142,7 +147,7 @@ nav a:visited {
     color: #fff;
     font-family: 'PT Sans';
     font-weight: 700;
-    font-size:1em;
+    font-size: 1em;
     text-transform: uppercase;
 }
 .accent {
@@ -151,10 +156,9 @@ nav a:visited {
     background-color: #fd7a7a;
 }
 .friends {
-    margin:auto;
-    width:92%;
-    background-color:#fff;
-    
+    margin: auto;
+    width: 92%;
+    background-color: #fff;
 }
 .friend {
     width: 100%;
@@ -164,18 +168,18 @@ nav a:visited {
     flex: 1;
     color: #000022;
     font-size: 1em;
-    padding-top:1em;
-    padding-left:.3em;
-    padding-bottom:1em;
-    font-weight:400;
-    margin-right:auto;
+    padding-top: 1em;
+    padding-left: .3em;
+    padding-bottom: 1em;
+    font-weight: 400;
+    margin-right: auto;
 }
 .check {
-    padding:1.5em 1.5em 0em 0em;
-    margin-left:auto;
+    padding: 1.5em 1.5em 0em 0em;
+    margin-left: auto;
 }
 .check .fa {
-    color:#ddd;
+    color: #ddd;
 }
 .separator {
     width: 100%;
@@ -192,4 +196,43 @@ nav a:visited {
     font-weight: 400;
     box-sizing: border-box;
     padding: 0em 1em 0em 1em;
+}
+.pending-mix .name-header {
+    background-color: #fd7a7a;
+}
+.message {
+    display: flex;
+}
+.message-text {
+    width: 100%;
+    background-color: #fff;
+    color: #000022;
+    font-style: italic;
+    padding: 1em;
+}
+.message .send-btn {
+    border: 0px;
+    width: 5em;
+    height: 100%;
+    background-color: #000022;
+    color: #fff;
+    font-family: 'PT Sans';
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: auto;
+}
+.message .send {
+    position: relative;
+}
+.message .send .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    color: #fff;
 }
